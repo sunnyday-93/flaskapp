@@ -7,8 +7,8 @@ RUN apk update && apk add --no-cache gcc musl-dev linux-headers
 RUN pip install --no-cache-dir flask
 
 # Add source code
-ADD flask.py ./
+ADD flaskapp.py ./
 
 # Expose port and set default command
 EXPOSE 8080
-CMD ["python", "flask.py"]
+CMD ["python", "flaskapp.py"]
