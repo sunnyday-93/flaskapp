@@ -1,5 +1,5 @@
 FROM python:alpine
-RUN pip install flask -i https://pypi.douban.com/simple
+RUN pip install flask
 ADD flask.py ./
 CMD ["python", "flask.py"]
 EXPOSE 8080
