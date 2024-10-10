@@ -1,0 +1,19 @@
+steps:
+  # Step 1: Build the Docker image with commit SHA tag
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/flaskapp/flaskapp:$COMMIT_SHA', '.']
+
+  # Step 2: Tag the image as 'latest'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'gcr.io/$PROJECT_ID/flaskapp/flaskapp:$COMMIT_SHA', 'gcr.io/$PROJECT_ID/flaskapp/flaskapp:latest']
+
+  # Step 3: Push both the commit SHA-tagged image and the 'latest' tag
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/flaskapp/flaskapp:$COMMIT_SHA']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/flaskapp/flaskapp:latest']
+
+substitutions:
+  _REPO_NAME: 'flaskapp'
+  _REGION: 'global'
