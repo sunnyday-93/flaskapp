@@ -17,3 +17,6 @@ steps:
 substitutions:
   _REPO_NAME: 'flaskapp'
   _REGION: 'global'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
